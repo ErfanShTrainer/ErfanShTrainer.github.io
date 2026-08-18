@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d0f12">
+<title>ErfanSh Trainer — دانلود ترینر بازی | Erfan SH Trainer</title>
+<meta name="description" content="ErfanSh Trainer — دانلود رایگان ترینر بازی‌های معروف. جستجو کن و مستقیم دانلود کن؛ همه‌چیز در یک صفحه.">
+<meta name="keywords" content="ErfanSh Trainer, Erfan SH Trainer, ترینر بازی, دانلود ترینر, trainer, game trainer, cheat trainer">
+<meta name="author" content="ErfanSh Trainer">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ErfanShTrainer.github.io/ErfanShTrainer/">
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ErfanSh Trainer">
+<meta property="og:title" content="ErfanSh Trainer — دانلود ترینر بازی">
+<meta property="og:description" content="دانلود رایگان ترینر بازی‌های معروف — همه در یک صفحه.">
+<meta property="og:image" content="https://ErfanShTrainer.github.io/ErfanShTrainer/LOGO-about.png">
+<meta property="og:url" content="https://ErfanShTrainer.github.io/ErfanShTrainer/">
+<meta property="og:locale" content="fa_IR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ErfanSh Trainer — دانلود ترینر بازی">
+<meta name="twitter:description" content="دانلود رایگان ترینر بازی‌های معروف — همه در یک صفحه.">
+<meta name="twitter:image" content="https://ErfanShTrainer.github.io/ErfanShTrainer/LOGO-about.png">
+
+<!-- پیش‌لود فونت‌ها -->
+<link rel="preload" href="fonts/LandOfFear.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Vazir.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "ErfanSh Trainer",
+  "url": "https://ErfanShTrainer.github.io/ErfanShTrainer/",
+  "inLanguage": "fa-IR"
+}
+</script>
+<script type="application/ld+json" id="seo-org">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ErfanSh Trainer",
+  "url": "https://ErfanShTrainer.github.io/ErfanShTrainer/",
+  "logo": "https://ErfanShTrainer.github.io/ErfanShTrainer/LOGO-about.png"
+}
+</script>
+<script type="application/ld+json" id="seo-items"></script>
+
+<style>
+/* ============================================================
+   ErfanSh Trainer — طراحی حرفه‌ای و رسپانسیو (یک فایل)
+   موبایل / تبلت / دسکتاپ / تلویزیون
+   ============================================================ */
+
+/* ---------- فونت وزیر (لوکال) ---------- */
+
+/* فونت انگلیسی — Land of Fear */
+
+@font-face {
+  font-family: "Land of Fear";
+  src: url("fonts/LandOfFear.woff2") format("woff2"), url("fonts/LandOfFear.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* فونت فارسی — وزیر */
+
+@font-face {
+  font-family: "Vazir";
+  src: url("fonts/Vazir.woff2") format("woff2"), url("fonts/Vazir.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazir";
+  src: url("fonts/Vazir.woff2") format("woff2"), url("fonts/Vazir.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --bg:        #0d0f12;
+  --surface:   #14171b;
+  --surface-2: #1a1e24;
+  --border:    #242a31;
+  --border-hi: #343c45;
+  --text:      #e8eaed;
+  --muted:     #98a1ad;
+  --accent:    #39ff14;
+  --accent-2:  #7aff66;
+  --accent-soft: rgba(57, 255, 20, 0.1);
+  --red:       #f87171;
+  --amber:     #fbbf24;
+  --radius:    12px;
+  --font: "Vazir", "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+  --font-display: "Land of Fear", "Vazir", "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+::selection {
+  background: rgba(57, 255, 20, 0.28);
+  color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- فوکوس (برای کیبورد و ریموت تلویزیون) ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- هدر ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(13, 15, 18, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+}
+
+.lang-toggle {
+  position: absolute;
+  inset-inline-start: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 2px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-hi);
+  border-radius: 9px;
+  padding: 3px;
+}
+.lang-toggle button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.lang-toggle button svg {
+  width: 18px;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+.lang-toggle button:hover { color: var(--text); }
+.lang-toggle button.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--text);
+  letter-spacing: 3px;
+}
+.brand:hover { text-decoration: none; color: var(--accent-2); }
+
+.brand .dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.8);
+  animation: pulse 2.6s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+
+
+/* ---------- هیرو ---------- */
+
+.hero-title {
+  color: var(--accent);
+  font-size: clamp(32px, 6vw, 50px);
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  min-height: 1.2em;
+}
+
+.type-caret {
+  display: inline-block;
+  width: 0.5ch;
+  height: 0.9em;
+  margin-inline-start: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  vertical-align: -0.05em;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.7);
+  animation: caretBlink 0.9s steps(1, end) infinite;
+}
+
+@keyframes caretBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+.hero-kicker {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  border: 1px solid rgba(57, 255, 20, 0.4);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 5px 14px;
+  box-shadow: 0 0 14px rgba(57, 255, 20, 0.15);
+  animation: blink 1.2s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.12; }
+}
+
+/* ---------- هیرو ---------- */
+
+.hero {
+  padding: 30px 0 26px;
+  background:
+    radial-gradient(900px 420px at 50% -120px, rgba(57, 255, 20, 0.12), transparent 70%);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+
+
+
+
+
+
+/* ---------- بخش‌ها ---------- */
+
+.section {
+  padding: 26px 0 34px;
+}
+
+.section-head {
+  margin-bottom: 16px;
+}
+
+.section-head h2 {
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.section-head h2::before {
+  content: "";
+  width: 4px; height: 22px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.section-head p { color: var(--muted); font-size: 14px; }
+
+/* ---------- نوار ابزار ---------- */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.search {
+  flex: 1;
+  min-width: 200px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14.5px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search::placeholder { color: #6b7280; }
+.search:focus { border-color: var(--accent); }
+
+/* ---------- گرید کارت‌ها ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  animation: fadeUp 0.4s ease both;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hi);
+  box-shadow: 0 0 0 1px rgba(57, 255, 20, 0.25), 0 10px 26px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* تصویر کوچک کنار هر ردیف */
+
+.thumb {
+  position: relative;
+  width: 118px;
+  height: 74px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.card:hover .thumb img { transform: scale(1.05); }
+
+.thumb-fallback {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #3d4651;
+  background:
+    radial-gradient(300px 160px at 50% 20%, rgba(57, 255, 20, 0.06), transparent 70%),
+    var(--surface-2);
+}
+.thumb.no-image .thumb-fallback { display: flex; }
+
+/* بدنه ردیف */
+
+.card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.card-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+}
+
+.card-meta {
+  color: var(--muted);
+  font-size: 12px;
+  font-family: var(--font);
+  direction: ltr;
+  text-align: right;
+  opacity: 0.85;
+  overflow-wrap: anywhere;
+}
+
+.card-note {
+  color: var(--muted);
+  font-size: 12.5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.card-actions {
+  flex-shrink: 0;
+  margin-inline-start: auto;
+}
+
+.card-actions .btn { white-space: nowrap; }
+
+/* ---------- دکمه‌ها ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--border-hi);
+  background: var(--surface-2);
+  color: var(--text);
+  border-radius: 9px;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.btn:hover { border-color: var(--muted); text-decoration: none; }
+
+.btn.primary {
+  background: #ff8ab8;
+  border-color: #ff8ab8;
+  color: #0d0f12;
+  box-shadow: 0 0 14px rgba(255, 138, 184, 0.3);
+}
+.btn.primary:hover { background: #ffa9c9; border-color: #ffa9c9; color: #0d0f12; box-shadow: 0 0 18px rgba(255, 169, 201, 0.45); }
+
+.btn.sm { padding: 8px 14px; font-size: 13px; border-radius: 8px; }
+
+/* ---------- حالت خالی ---------- */
+
+#empty {
+  display: none;
+  text-align: center;
+  color: var(--muted);
+  padding: 50px 0;
+  border: 1px dashed var(--border-hi);
+  border-radius: var(--radius);
+  font-size: 14.5px;
+}
+
+/* ---------- صفحه‌بندی ---------- */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.pg-btn {
+  min-width: 42px;
+  padding: 9px 14px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.pg-btn:hover:not(:disabled):not(.active) { border-color: var(--border-hi); color: var(--text); }
+.pg-btn.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.pg-btn:disabled { opacity: 0.4; cursor: default; }
+.pg-ellipsis { color: var(--muted); padding: 0 2px; }
+
+/* ---------- دکمه‌ی شناور برگشت به بالا ---------- */
+
+.to-top {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  z-index: 60;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(57, 255, 20, 0.5);
+  background: var(--accent);
+  color: #061000;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(57, 255, 20, 0.35), 0 8px 24px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s, border-color 0.15s, background 0.15s;
+}
+.to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.to-top:hover { border-color: var(--accent-2); background: var(--accent-2); }
+
+@media (max-width: 480px) {
+  .to-top { width: 46px; height: 46px; font-size: 18px; bottom: 16px; left: 16px; }
+}
+
+@media (min-width: 1600px) {
+  .to-top { width: 64px; height: 64px; font-size: 26px; bottom: 30px; left: 30px; }
+}
+
+/* ---------- درباره ---------- */
+
+.about {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.about .section { padding: 26px 0 30px; }
+.about .section-head { margin-bottom: 12px; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.about p { color: var(--muted); font-size: 14.5px; margin-bottom: 10px; }
+.about b { color: var(--text); }
+
+.about-logo {
+  width: min(100%, 260px);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.telegram-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 14px;
+}
+
+.telegram-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border-hi);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 7px 18px 7px 12px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.15s;
+}
+
+.telegram-btn:hover {
+  border-color: #4fb6e6;
+  color: var(--accent-2);
+  text-decoration: none;
+}
+
+.telegram-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #229ed9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.telegram-icon svg {
+  width: 17px;
+  height: 17px;
+  fill: #ffffff;
+}
+
+/* ---------- فوتر ---------- */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 18px 0 22px;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ============================================================
+   رسپانسیو — تبلت
+   ============================================================ */
+
+@media (min-width: 640px) {
+  .hero { padding: 44px 0 40px; }
+}
+
+/* ============================================================
+   رسپانسیو — دسکتاپ
+   ============================================================ */
+
+@media (min-width: 1024px) {
+  .section { padding: 34px 0; }
+}
+
+/* ============================================================
+   رسپانسیو — تلویزیون و صفحه‌های خیلی بزرگ
+   ============================================================ */
+
+@media (min-width: 1600px) {
+  html { font-size: 17px; }
+  .container { max-width: 1500px; }
+  .grid { gap: 14px; }
+  .card { border-radius: 16px; padding: 14px 18px; }
+  .thumb { width: 150px; height: 92px; }
+  .hero { padding: 34px 0 30px; }
+  .hero h1 { font-size: 56px; }
+  .btn { padding: 13px 22px; font-size: 15px; }
+}
+
+/* ---------- موبایل ---------- */
+
+@media (max-width: 640px) {
+  .card { gap: 10px; padding: 9px 10px; }
+  .thumb { width: 88px; height: 56px; }
+  .card-note { display: none; }
+  .hero-title { font-size: clamp(24px, 6vw, 34px); letter-spacing: 2px; }
+}
+
+@media (max-width: 420px) {
+  .card-title { flex-wrap: wrap; font-size: 14px; letter-spacing: 0.5px; }
+  .btn.sm { padding: 7px 10px; font-size: 12px; }
+}
+
+/* ---------- حرکات کم ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= هدر ================= -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#trainers">
+      <span class="dot"></span>
+      <span>ErfanSh Trainer</span>
+    </a>
+    <div class="lang-toggle" id="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="false" title="English">
+        <svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="uk-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#uk-s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+        <span>EN</span>
+      </button>
+      <button type="button" data-lang="fa" aria-pressed="true" title="فارسی">
+        <svg viewBox="0 0 16 11" aria-hidden="true"><rect width="16" height="11" fill="#fff"/><rect width="16" height="3.7" fill="#239f40"/><rect y="7.3" width="16" height="3.7" fill="#da0000"/></svg>
+        <span>FA</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= هیرو ================= -->
+<section class="hero" id="top">
+  <div class="container">
+    <h1 class="hero-title" id="hero-title">ErfanSh Trainer</h1>
+    <span class="hero-kicker" data-i18n="kicker">ساخته شده با حوصله =))</span>
+  </div>
+</section>
+
+<!-- ================= ترینرها ================= -->
+<main class="container">
+  <section class="section" id="trainers">
+    <div class="toolbar">
+      <input type="search" id="search" class="search" placeholder="جستجو در ترینرها…" autocomplete="off">
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <p id="empty" data-i18n="empty">چیزی پیدا نشد.</p>
+    <nav class="pagination" id="pagination" aria-label="صفحه‌بندی"></nav>
+  </section>
+</main>
+
+<!-- ================= درباره ================= -->
+<section class="about" id="about">
+  <div class="container section">
+    <div class="about-grid">
+      <div>
+        <div class="section-head">
+          <h2 data-i18n="aboutTitle">درباره</h2>
+        </div>
+        <p data-i18n="aboutP1">اینجا ترینرهایی که می‌سازم رو منتشر می‌کنم. هدفم اینه که <b>ساده و بی‌دردسر</b> باشه: بدون صفحه‌های اضافه، بدون تبلیغات مزاحم، فقط ترینر.</p>
+        <p data-i18n="aboutP2">همه‌ی فایل‌ها روی سرور جداگانه نگهداری می‌شن و لینک دانلود همون‌جا باز می‌شه.</p>
+        <div class="telegram-row">
+          <a class="telegram-btn" href="https://t.me/s04ial" target="_blank" rel="noopener" aria-label="تلگرام">
+            <span class="telegram-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            </span>
+            <span data-i18n="telegram">تلگرام</span>
+          </a>
+        </div>
+      </div>
+      <picture>
+        <source type="image/webp" srcset="LOGO-about.webp">
+        <img class="about-logo" src="LOGO-about.png" alt="ErfanSh Trainer" width="320" height="320" loading="lazy" decoding="async">
+      </picture>
+    </div>
+  </div>
+</section>
+
+<!-- ================= فوتر ================= -->
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year">2026</span> ErfanSh Trainer — <span data-i18n="footer">ساخته‌شده برای گیمرها</span></span>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" aria-label="برگشت به بالا">↑</button>
+
+<script src="script.min.js?v=msy2grcy"></script>
+</body>
+</html>
