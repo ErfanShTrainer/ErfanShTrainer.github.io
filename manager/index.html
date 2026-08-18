@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0f12">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>ErfanSh Trainer Manager</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://api.github.com; worker-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d0f12; --panel: #14171c; --card: #1a1e24;
+    --line: #232932; --accent: #39ff14; --accent-dim: rgba(57,255,20,.12);
+    --pink: #ff8ab8; --red: #f87171; --text: #e8eaed; --muted: #8b93a1;
+  }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+    min-height: 100dvh; padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+  header {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px; padding-top: calc(12px + env(safe-area-inset-top));
+    background: rgba(13,15,18,.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  header img { width: 34px; height: 34px; border-radius: 9px; }
+  header h1 { font-size: 15px; font-weight: 800; letter-spacing: .3px; }
+  header h1 span { color: var(--accent); }
+  #status {
+    margin-inline-start: auto; font-size: 10.5px; font-weight: 700;
+    color: var(--muted); background: var(--panel); border: 1px solid var(--line);
+    padding: 4px 9px; border-radius: 999px; white-space: nowrap; max-width: 45vw; overflow: hidden; text-overflow: ellipsis;
+  }
+  #status.ok { color: var(--accent); border-color: rgba(57,255,20,.35); }
+  #status.err { color: var(--red); border-color: rgba(248,113,113,.35); }
+
+  .toolbar {
+    position: fixed; bottom: 0; inset-inline: 0; z-index: 20;
+    display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px;
+    padding: 10px 12px; padding-bottom: calc(10px + env(safe-area-inset-bottom));
+    background: rgba(13,15,18,.95); backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+  }
+  button {
+    font-family: inherit; border: 0; border-radius: 11px; cursor: pointer;
+    font-weight: 700; font-size: 13px; padding: 12px 10px; color: var(--text);
+    background: var(--card); border: 1px solid var(--line);
+    -webkit-tap-highlight-color: transparent; transition: transform .05s, opacity .15s;
+  }
+  button:active { transform: scale(.97); }
+  button:disabled { opacity: .45; cursor: default; }
+  .btn-green { background: var(--accent); color: #0d0f12; border: 0; }
+  .btn-pink { background: var(--pink); color: #2a0d18; border: 0; }
+  .btn-ghost { background: transparent; }
+  .btn-danger { color: var(--red); border-color: rgba(248,113,113,.4); }
+
+  main { padding: 12px 12px 8px; max-width: 640px; margin-inline: auto; }
+  .view { display: none; }
+  .view.active { display: block; animation: fade .18s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .list-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .list-head h2 { font-size: 13px; color: var(--muted); font-weight: 700; }
+  .list-head button { padding: 8px 14px; font-size: 12.5px; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 13px 14px; margin-bottom: 9px; display: flex; align-items: center; gap: 11px;
+    cursor: pointer; -webkit-tap-highlight-color: transparent;
+  }
+  .card:active { transform: scale(.99); }
+  .card .thumb {
+    width: 46px; height: 46px; border-radius: 10px; flex-shrink: 0;
+    background: var(--panel); display: grid; place-items: center; overflow: hidden;
+    color: var(--accent); font-weight: 800; font-size: 17px;
+  }
+  .card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .card .meta { min-width: 0; flex: 1; }
+  .card .meta .t { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card .meta .d { font-size: 11px; color: var(--muted); margin-top: 3px; }
+  .chip {
+    font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 999px; flex-shrink: 0;
+    background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(57,255,20,.3);
+  }
+  .chip.old { background: rgba(139,147,161,.12); color: var(--muted); border-color: var(--line); }
+  .chip.update { background: rgba(255,138,184,.12); color: var(--pink); border-color: rgba(255,138,184,.35); }
+
+  .empty {
+    text-align: center; color: var(--muted); padding: 44px 16px; font-size: 13px;
+    border: 1px dashed var(--line); border-radius: 14px;
+  }
+
+  .form { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px; }
+  .form label { display: block; font-size: 11.5px; font-weight: 700; color: var(--muted); margin: 12px 0 5px; }
+  .form label:first-child { margin-top: 0; }
+  input, select, textarea {
+    width: 100%; font-family: inherit; font-size: 14px; color: var(--text);
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 11px 12px; outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 64px; }
+  .form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .form .row label { margin-top: 12px; }
+  .form-actions { display: flex; gap: 9px; margin-top: 16px; }
+  .form-actions button { flex: 1; }
+  .back-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .back-row h2 { font-size: 15px; }
+
+  #overlay {
+    position: fixed; inset: 0; z-index: 50; display: none; place-items: center;
+    background: rgba(13,15,18,.82); backdrop-filter: blur(3px);
+  }
+  #overlay.show { display: grid; }
+  .spinner {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 3px solid var(--line); border-top-color: var(--accent);
+    animation: spin .8s linear infinite; margin-bottom: 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #overlay .box { text-align: center; color: var(--text); font-size: 13px; font-weight: 700; }
+
+  #toast {
+    position: fixed; bottom: calc(92px + env(safe-area-inset-bottom)); inset-inline: 0;
+    display: none; justify-content: center; z-index: 60; pointer-events: none; padding: 0 16px;
+  }
+  #toast.show { display: flex; }
+  #toast div {
+    background: #20262e; border: 1px solid var(--line); border-radius: 12px;
+    padding: 11px 18px; font-size: 12.5px; font-weight: 700; max-width: 100%;
+    box-shadow: 0 8px 24px rgba(0,0,0,.5); text-align: center;
+  }
+  #toast div.ok { border-color: rgba(57,255,20,.45); color: var(--accent); }
+  #toast div.err { border-color: rgba(248,113,113,.45); color: var(--red); }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="icon-192.png" alt="">
+  <h1>ErfanSh <span>Trainer</span> Manager</h1>
+  <span id="status">آماده</span>
+</header>
+
+<main>
+  <!-- لیست -->
+  <section id="view-list" class="view active">
+    <div class="list-head">
+      <h2 id="list-title">پست‌ها</h2>
+      <button id="btn-new" class="btn-green">+ پست جدید</button>
+    </div>
+    <div id="posts"></div>
+    <div class="empty" id="empty" style="display:none">هنوز پستی نیست — «پست جدید» را بزن.</div>
+  </section>
+
+  <!-- ویرایش -->
+  <section id="view-edit" class="view">
+    <div class="back-row">
+      <button class="btn-ghost" id="btn-back" style="padding:8px 12px">→</button>
+      <h2 id="edit-title">پست جدید</h2>
+    </div>
+    <div class="form">
+      <label>عنوان ترینر *</label>
+      <input id="f-title" autocomplete="off">
+      <div class="row">
+        <div><label>نام بازی</label><input id="f-game" autocomplete="off"></div>
+        <div><label>نسخه</label><input id="f-version" autocomplete="off"></div>
+      </div>
+      <div class="row">
+        <div><label>تاریخ (میلادی)</label><input id="f-date" placeholder="2026-08-18" autocomplete="off"></div>
+        <div><label>وضعیت</label>
+          <select id="f-status">
+            <option value="new">جدید</option>
+            <option value="update">آپدیت</option>
+            <option value="old">قدیمی</option>
+          </select>
+        </div>
+      </div>
+      <label>توضیح فارسی</label>
+      <textarea id="f-note" rows="2"></textarea>
+      <label>توضیح انگلیسی</label>
+      <textarea id="f-noteEn" rows="2"></textarea>
+      <label>لینک مستقیم عکس</label>
+      <input id="f-image" dir="ltr" autocomplete="off">
+      <label>لینک دانلود *</label>
+      <input id="f-url" dir="ltr" autocomplete="off">
+      <div class="form-actions">
+        <button class="btn-green" id="btn-save">💾 ذخیره</button>
+        <button class="btn-danger" id="btn-del" style="display:none">🗑 حذف</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- تنظیمات -->
+  <section id="view-settings" class="view">
+    <div class="back-row">
+      <button class="btn-ghost" id="btn-back2" style="padding:8px 12px">→</button>
+      <h2>تنظیمات</h2>
+    </div>
+    <div class="form">
+      <label>توکن گیت‌هاب</label>
+      <input id="s-token" type="password" dir="ltr" autocomplete="off">
+      <label>نام کاربری (Owner)</label>
+      <input id="s-owner" dir="ltr" autocomplete="off">
+      <div class="row">
+        <div><label>ریپوی سایت</label><input id="s-site" dir="ltr" autocomplete="off"></div>
+        <div><label>ریپوی سورس (خصوصی)</label><input id="s-src" dir="ltr" autocomplete="off"></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-green" id="btn-savecfg">ذخیره</button>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:14px;line-height:1.9">
+        توکن از قبل پیکربندی شده — بدون نیاز به تایپ. فقط روی همین دستگاه ذخیره می‌شود.
+        اگه خواستی توکن دیگری بگذاری، همین‌جا عوضش کن.
+      </p>
+    </div>
+  </section>
+</main>
+
+<div class="toolbar">
+  <button id="btn-sync">⇅ همگام‌سازی</button>
+  <button id="btn-publish" class="btn-pink">🚀 انتشار</button>
+  <button id="btn-settings" style="width:52px">⚙</button>
+</div>
+
+<div id="overlay"><div class="box"><div class="spinner"></div><div id="overlay-msg">در حال انجام…</div></div></div>
+<div id="toast"><div id="toast-msg"></div></div>
+
+<script src="app.js?v=4"></script>
+</body>
+</html>
